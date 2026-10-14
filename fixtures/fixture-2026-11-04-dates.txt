@@ -1,0 +1,55 @@
+【合成样本 S4 日期边界｜全部虚构】
+run_date 填：2026-11-04
+期望：items 2 条——钉钉文档 AI 公式（importance 3）、企微 23:30 GMT 发布的智能表格模板（换算北京时间为 11-04，应收录）；企微两天前旧闻、飞书首页链接进 filtered
+
+========== s1_text（飞书）从下一行开始复制 ==========
+# Result 1: [飞书官网](https://www.feishu.cn/)
+
+**Published Date:** Wed, 04 Nov 2026 02:00:00 GMT
+
+**URL:** https://www.feishu.cn/
+
+**Relevance Score:** 0.45
+
+**Content:**
+飞书：先进团队，先用飞书。AI 时代的协同办公平台。
+========== s1_text 到上一行结束 ==========
+
+========== s2_text（钉钉）从下一行开始复制 ==========
+# Result 1: [钉钉文档支持 AI 公式：用自然语言生成表格公式](https://example.com/fixture/dingtalk-doc-ai-formula)
+
+**Published Date:** Wed, 04 Nov 2026 05:12:33 GMT
+
+**URL:** https://example.com/fixture/dingtalk-doc-ai-formula
+
+**Relevance Score:** 0.74
+
+**Content:**
+钉钉今日宣布，钉钉文档表格支持 AI 公式，用户用自然语言描述需求即可生成并解释公式，支持 VLOOKUP、条件统计等常用场景，即日起全量上线。
+========== s2_text 到上一行结束 ==========
+
+========== s3_text（企业微信）从下一行开始复制 ==========
+# Result 1: [企业微信智能表格上线 50 个行业模板](https://example.com/fixture/wecom-sheet-templates)
+
+**Published Date:** Tue, 03 Nov 2026 23:30:12 GMT
+
+**URL:** https://example.com/fixture/wecom-sheet-templates
+
+**Relevance Score:** 0.69
+
+**Content:**
+企业微信今日宣布，智能表格上线零售、制造、教育等 50 个行业模板，模板内置 AI 字段，可自动汇总客户跟进与库存数据。
+
+---
+
+# Result 2: [企业微信客户联系支持 AI 话术推荐](https://example.com/fixture/wecom-old-news)
+
+**Published Date:** Mon, 02 Nov 2026 03:00:45 GMT
+
+**URL:** https://example.com/fixture/wecom-old-news
+
+**Relevance Score:** 0.58
+
+**Content:**
+11 月 2 日，企业微信客户联系功能上线 AI 话术推荐，可根据客户历史消息推荐回复。
+========== s3_text 到上一行结束 ==========
