@@ -1,0 +1,61 @@
+【回放样本 2026-10-12｜手工构造：第 1、2 条依据真实文章与标准答案，第 3、4 条为干扰项】
+run_date 填：2026-10-12
+期望结果：items = 安克×飞书 AI 会议耳机（合作/新品，★★★ 以上）+ 虎嗅复盘飞书 8.0（行业观察，★★）；filtered = 安克录音豆旧闻、aily 转载
+
+========== s1_text（飞书）从下一行开始复制 ==========
+# Result 1: [安克联合飞书推出 AI 会议耳机：Thus™ AI 芯片驱动，重构办公新体验](https://www.163.com/dy/article/L92PVD0R0556KBWI.html)
+
+**Published Date:** Mon, 12 Oct 2026 13:42:14 GMT
+
+**URL:** https://www.163.com/dy/article/L92PVD0R0556KBWI.html
+
+**Relevance Score:** 0.82
+
+**Content:**
+（2026 年 10 月 12 日）今日，全球化智能硬件科技企业安克创新（Anker）联合飞书正式推出安克 AI 会议耳机，官方售价 1799 元。作为行业内首款原生搭载飞书 AI 的会议耳机……飞书、钉钉、腾讯会议、Teams、Zoom 等主流会议软件均可录音，耳机与充电盒皆可记录，双击耳机即录，现场谈话断网时也能无网录音、本地存储。录音、转写、纪要自动沉淀至飞书，免转、免搬运。会后秒出含图表、待办、金句、关键决策的结构化纪要；转写支持发言人识别与中英日多语言混录、24 种语言翻译。
+
+---
+
+# Result 2: [飞书 8.0 复盘：Agent 以“组织成员”身份进入工作流](https://www.huxiu.com/article/4896760.html)
+
+**Published Date:** Mon, 12 Oct 2026 06:30:00 GMT
+
+**URL:** https://www.huxiu.com/article/4896760.html
+
+**Relevance Score:** 0.61
+
+**Content:**
+复盘 9 月 15 日飞书 8.0 发布会：自 3 月开放 CLI 以来，飞书向 Agent 开放的功能点从 247 个增至 767 个，执行成功率从 78% 升至 95%。压轴的“豆包工作伙伴”被称为团队级智能体，有独立身份、权限和记忆，管理员可管控工具、用量并追溯日志，目前仍在与企业定向共创。
+
+---
+
+# Result 3: [安克 AI 录音豆上手：飞书妙记加持的随身录音](https://example.com/fixture/anker-recorder-bean)
+
+**Published Date:** Mon, 19 Jan 2026 02:00:00 GMT
+
+**URL:** https://example.com/fixture/anker-recorder-bean
+
+**Relevance Score:** 0.40
+
+**Content:**
+安克 AI 录音豆今日发布，接入飞书妙记，录音自动转写并生成纪要。
+
+---
+
+# Result 4: [飞书 aily 升级为多智能体协同平台](https://example.com/fixture/aily-repost)
+
+**Published Date:** Sat, 10 Oct 2026 03:00:00 GMT
+
+**URL:** https://example.com/fixture/aily-repost
+
+**Relevance Score:** 0.33
+
+**Content:**
+（转载）7 月 23 日，飞书宣布 aily 升级为多智能体协同平台，支持多个智能体分工协作完成复杂任务。
+========== s1_text 到上一行结束 ==========
+
+========== s2_text（钉钉）复制下一行 ==========
+No results found for '钉钉' in Tavily.
+
+========== s3_text（企业微信）复制下一行 ==========
+No results found for '企业微信' in Tavily.
