@@ -42,10 +42,12 @@
 
 在 Dify 里选「导入 DSL 文件」，选 `dsl/competitor-daily-v6.yml`，然后配置 Tavily、DeepSeek 和邮件插件的凭证，再把发送邮件节点的收件人改成你自己的邮箱。
 
+跑评测：导入 `dsl/competitor-daily-harness.yml`（「日报回测」），配置 DeepSeek 凭证。它没有 Tavily 和邮件节点，开始节点输入 `s1_text` / `s2_text` / `s3_text`（三路搜索原文）和 `run_date_`（样本日期），把 `fixtures/` 里的样本粘进去运行，「自动打分」节点会输出 `score` / `fails`。
+
 ## 目录
 
-- `dsl/`：Dify 工作流导出文件（收件邮箱已替换为占位）
-
+- `dsl/competitor-daily-v6.yml`：正式工作流（定时 + 邮件推送，收件邮箱已替换为占位）
+- `dsl/competitor-daily-harness.yml`：评测用回测工作流（输入样本文本，带自动打分）
 - `nodes/`：代码节点（时区转换、硬规则检查、自动打分）
 - `fixtures/`：回放样本（真实回放 + 合成样本）
 - `docs/error-log.md`：错误日志与每次修复的决策记录
