@@ -1,0 +1,50 @@
+【合成样本 S2 年度发布会+同事件多报道｜全部虚构】
+run_date 填：2026-11-02
+期望：items 仅 1 条钉钉年度发布会，importance 5；媒体报道与分析文同一事件合并进 filtered；飞书、企微无条目
+
+========== s1_text（飞书）从下一行开始复制 ==========
+No results found for '飞书' in Tavily.
+========== s1_text 到上一行结束 ==========
+
+========== s2_text（钉钉）从下一行开始复制 ==========
+# Result 1: [钉钉 9.0 发布会：全面 Agent 化，推出组织级 AI 助理](https://example.com/fixture/dingtalk-9-launch)
+
+**Published Date:** Mon, 02 Nov 2026 02:30:00 GMT
+
+**URL:** https://example.com/fixture/dingtalk-9-launch
+
+**Relevance Score:** 0.88
+
+**Content:**
+今日，钉钉在杭州举办年度发布会，正式发布钉钉 9.0。钉钉宣布全面 Agent 化，推出组织级 AI 助理，可跨审批、日程、文档执行任务；同时开放 Agent 市场，首批上线 200 个行业 Agent。钉钉表示，9.0 将于本月起向全部企业用户推送。
+
+---
+
+# Result 2: [钉钉 9.0 来了：组织级 AI 助理能跨审批、日程、文档干活](https://example.com/fixture/dingtalk-9-media)
+
+**Published Date:** Mon, 02 Nov 2026 04:10:00 GMT
+
+**URL:** https://example.com/fixture/dingtalk-9-media
+
+**Relevance Score:** 0.71
+
+**Content:**
+11 月 2 日，钉钉发布 9.0 版本，主打组织级 AI 助理，支持跨审批、日程、文档执行任务，并上线 Agent 市场，首批 200 个行业 Agent。
+
+---
+
+# Result 3: [钉钉 9.0 解读：Agent 市场能否复制应用商店的成功？](https://example.com/fixture/dingtalk-9-analysis)
+
+**Published Date:** Mon, 02 Nov 2026 09:45:00 GMT
+
+**URL:** https://example.com/fixture/dingtalk-9-analysis
+
+**Relevance Score:** 0.55
+
+**Content:**
+今天钉钉 9.0 发布后，我们认为其 Agent 市场的关键在于开发者分成与企业数据权限。与应用商店不同，Agent 需要调用组织内数据，治理难度更高。
+========== s2_text 到上一行结束 ==========
+
+========== s3_text（企业微信）从下一行开始复制 ==========
+No results found for '企业微信' in Tavily.
+========== s3_text 到上一行结束 ==========
