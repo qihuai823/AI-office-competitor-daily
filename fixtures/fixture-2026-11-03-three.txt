@@ -1,0 +1,55 @@
+【合成样本 S3 三家同天+横评干扰｜全部虚构】
+run_date 填：2026-11-03
+期望：items 3 条——飞书多维表格 AI 字段（importance 3）、钉钉×某银行官宣合作（type 合作，importance 4）、企微修复消息同步问题（importance 1-2）；钉钉路的协同软件横评进 filtered
+
+========== s1_text（飞书）从下一行开始复制 ==========
+# Result 1: [飞书多维表格上线 AI 字段：一键批量生成摘要与分类](https://example.com/fixture/feishu-base-ai-field)
+
+**Published Date:** Tue, 03 Nov 2026 03:00:12 GMT
+
+**URL:** https://example.com/fixture/feishu-base-ai-field
+
+**Relevance Score:** 0.8
+
+**Content:**
+飞书今日宣布，多维表格上线 AI 字段功能，用户可对整列数据一键批量生成摘要、分类和信息提取，结果随源数据变化自动更新。该功能即日起向所有付费版用户开放。
+========== s1_text 到上一行结束 ==========
+
+========== s2_text（钉钉）从下一行开始复制 ==========
+# Result 1: [钉钉与江南银行官宣合作：AI 助理接入行内审批与客服](https://example.com/fixture/dingtalk-bank-partner)
+
+**Published Date:** Tue, 03 Nov 2026 06:20:40 GMT
+
+**URL:** https://example.com/fixture/dingtalk-bank-partner
+
+**Relevance Score:** 0.77
+
+**Content:**
+11 月 3 日，钉钉与江南银行正式官宣战略合作。双方将把钉钉 AI 助理接入江南银行内部审批、知识库与客服系统，首批覆盖 3000 名员工。
+
+---
+
+# Result 2: [2026 协同办公软件横评：飞书、钉钉、企业微信、Teams 谁更适合中小企业](https://example.com/fixture/office-suite-review)
+
+**Published Date:** Tue, 03 Nov 2026 08:00:00 GMT
+
+**URL:** https://example.com/fixture/office-suite-review
+
+**Relevance Score:** 0.52
+
+**Content:**
+本文从价格、AI 能力、生态三方面横向对比飞书、钉钉、企业微信与 Teams，给出中小企业选型建议。
+========== s2_text 到上一行结束 ==========
+
+========== s3_text（企业微信）从下一行开始复制 ==========
+# Result 1: [企业微信 5.0.15 更新：修复部分安卓机型消息同步延迟](https://example.com/fixture/wecom-5015-fix)
+
+**Published Date:** Tue, 03 Nov 2026 07:35:21 GMT
+
+**URL:** https://example.com/fixture/wecom-5015-fix
+
+**Relevance Score:** 0.48
+
+**Content:**
+企业微信今日发布 5.0.15 版本更新，修复部分安卓机型在弱网环境下消息同步延迟的问题，并优化了通讯录加载速度。
+========== s3_text 到上一行结束 ==========
