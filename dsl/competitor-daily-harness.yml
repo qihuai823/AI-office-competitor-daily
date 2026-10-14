@@ -1,0 +1,1582 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: workflow
+  name: 日报回测
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/deepseek:0.0.24@9e12eef09973667f0eaf4f082af883167e1de88740b22e71e71488d020c3778a
+    version: null
+kind: app
+version: 0.7.0
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: 7e7c96d1-fb74-4bea-93b5-8e18f8211786
+    name: daily_rules
+    selector:
+    - env
+    - daily_rules
+    value: '我方是一个 AI 办公产品团队，飞书、钉钉、企业微信都是竞品。以下标准按编号优先，冲突时编号小的优先。
+
+      1. 来源：只用搜索结果里有的事实和链接，发布日期必须等于 today。
+
+      2. 同一事件只留 1 条：同一竞品、同一合作或产品、同一天的多篇报道、评测、解读合并为一条，优先官方来源，其次信息最全的一篇，其他篇的新信息并入 what；其余篇放进
+      filtered，reason「同一事件，已合并」。
+
+      3. 主角：竞品是发布方、联合发布方或合作方，且名字出现在标题里，就算主角。只在正文顺带提到、横评、榜单、导购放进 filtered，reason「仅被提及，非主角」。
+
+      4. type：官宣联合、打通、接入写「合作」。当天发布、且没有对应主条的第三方复盘或分析写「行业观察」，即使分析的是往日事件。
+
+      5. importance：5 年度发布会或重大战略；4 官宣联合/打通/接入、大版本、核心 AI；3 联名硬件、新品、重要功能；2 行业观察；1 小活动、小修复。
+
+      6. insight：2 句以内，写对我方产品的启示，落到方向或功能点。不写团队、人名、截止日期、KPI、搜索结果里没有的公司名。
+
+      7. highlights（3 句内，最重要的先说）和 comparison 只写 items 里的内容，不提哪家没有动态。
+
+      8. filtered 的 reason 优先写硬证据：日期不符写「发布日期非今日（原文 YYYY-MM-DD）」。'
+    value_type: string
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        knowledge_file_size_limit: 15
+        single_chunk_attachment_limit: 10
+        skill_file_size_limit: 50
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1791860052740-source-1791861440415-target
+      selected: false
+      source: '1791860052740'
+      sourceHandle: source
+      target: '1791861440415'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 17918609999161-source-1791861440415-target
+      selected: false
+      source: '17918609999161'
+      sourceHandle: source
+      target: '1791861440415'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 17918609755861-source-1791861440415-target
+      selected: false
+      source: '17918609755861'
+      sourceHandle: source
+      target: '1791861440415'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1791861440415-source-1791879564409-target
+      selected: false
+      source: '1791861440415'
+      sourceHandle: source
+      target: '1791879564409'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1791879564409-source-1791880355379-target
+      selected: false
+      source: '1791879564409'
+      sourceHandle: source
+      target: '1791880355379'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: variable-aggregator
+      id: 1791880544392-true-1791880629407-target
+      selected: false
+      source: '1791880544392'
+      sourceHandle: 'true'
+      target: '1791880629407'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: if-else
+        targetType: llm
+      id: 1791880544392-false-1791880640119-target
+      selected: false
+      source: '1791880544392'
+      sourceHandle: 'false'
+      target: '1791880640119'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1791880355379-source-1791881422717-target
+      selected: false
+      source: '1791880355379'
+      sourceHandle: source
+      target: '1791881422717'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: if-else
+      id: 1791881422717-source-1791880544392-target
+      selected: false
+      source: '1791881422717'
+      sourceHandle: source
+      target: '1791880544392'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: llm
+        targetType: variable-aggregator
+      id: 1791880640119-source-1791880629407-target
+      selected: false
+      source: '1791880640119'
+      sourceHandle: source
+      target: '1791880629407'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: variable-aggregator
+        targetType: code
+      id: 1791880629407-source-1791897375882-target
+      selected: false
+      source: '1791880629407'
+      sourceHandle: source
+      target: '1791897375882'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: template-transform
+        targetType: end
+      id: 1791884679242-source-1791860447727-target
+      selected: false
+      source: '1791884679242'
+      sourceHandle: source
+      target: '1791860447727'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1791859598932-source-17918609999161-target
+      selected: false
+      source: '1791859598932'
+      sourceHandle: source
+      target: '17918609999161'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1791859598932-source-1791860052740-target
+      selected: false
+      source: '1791859598932'
+      sourceHandle: source
+      target: '1791860052740'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1791859598932-source-17918609755861-target
+      selected: false
+      source: '1791859598932'
+      sourceHandle: source
+      target: '17918609755861'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1791897375882-source-1791971325115-target
+      selected: false
+      source: '1791897375882'
+      sourceHandle: source
+      target: '1791971325115'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: template-transform
+      id: 1791971325115-source-1791884679242-target
+      selected: false
+      source: '1791971325115'
+      sourceHandle: source
+      target: '1791884679242'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: code
+      id: 1791962105399-source-1791974499274-target
+      source: '1791962105399'
+      sourceHandle: source
+      target: '1791974499274'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: code
+        targetType: code
+      id: 1791974499274-source-1791859598932-target
+      source: '1791974499274'
+      sourceHandle: source
+      target: '1791859598932'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        code: "from datetime import date, timedelta\n\ndef main(run_date: str) ->\
+          \ dict:\n    d = date.fromisoformat(run_date.strip())\n    return {\n  \
+          \      \"today\": d.isoformat(),\n        \"tomorrow\": (d + timedelta(days=1)).isoformat(),\n\
+          \    }"
+        code_language: python3
+        outputs:
+          today:
+            children: null
+            type: string
+          tomorrow:
+            children: null
+            type: string
+        selected: false
+        title: 日期
+        type: code
+        variables:
+        - value_selector:
+          - '1791962105399'
+          - run_date_
+          value_type: string
+          variable: run_date
+      height: 51
+      id: '1791859598932'
+      position:
+        x: 524.8486382300102
+        y: 373.12629595180596
+      positionAbsolute:
+        x: 524.8486382300102
+        y: 373.12629595180596
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0
+            thinking: false
+          mode: chat
+          name: deepseek-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 28b57390-0dc0-4be0-b75a-d61b0e7cdb94
+          role: system
+          text: "你是 AI 办公赛道的竞品分析员，只负责一个竞品。\n规则：\n1. 只依据给你的搜索结果，不编造事实和链接；url 必须是搜索结果里的原链接。\n\
+            2. 判断依据是每条结果的标题和 Published Date；Content 里顺带出现的侧栏、相关文章标题不算动态。\n3. 行业观察收录标准（折中）：\n\
+            - 竞品官方当天的发布、更新、合作、人事、数据，按普通动态收录。\n- 第三方文章（复盘、评测、分析）只有同时满足两点才收录，type 填「行业观察」，importance\
+            \ 不超过 2：\n  a) 发布日期等于今天；\n  b) 该竞品是文章主角：标题或第一段就在讲它，全文主要分析它的产品或策略。\n- 以下情况不收录，放入\
+            \ filtered，reason 写「仅被提及，非主角」：\n  别家产品的新闻里顺带提到该竞品（如「支持在钉钉中发消息」）；多品牌横评、榜单、导购文；该竞品只出现在列举中。\n\
+            4. 主体必须是该竞品本身，只是提到该竞品的不收。\n5. 同一事件多篇报道只保留一条，选最权威的来源。\n6. importance 1-3：3=产品发布/重大功能/战略；2=功能更新/合作/行业观察；1=小改动。\n\
+            7. insight 写对做 AI 办公产品的我们有什么启发，要具体，不说空话。\n8. 不符合的结果放进 filtered，写上标题和过滤原因。没有动态时\
+            \ items 为空数组。\n9.「搜索结果为空时，返回 items 和 filtered 均为空数组。」「今日无动态」交给 highlights\
+            \ 一句话说就够。\n10.「搜索结果未给出发布日期的，不得自行填写日期，放入 filtered，reason 写「无发布日期」。」\n商业软文（文末有商业转载免责声明、主体是第三方服务商）进\
+            \ filtered，reason 写「第三方软文，非竞品动态」。\n对已发布产品的分析文章归「行业观察」，不得写成「推出」或「发布」。\n\
+            评论、分析、复盘类第三方文章（标题是问句或观点句，或主要内容是作者的分析），type 只能是「行业观察」，不得归为其他类型。\nwhat 只写原文明确的事实。文中的设想、计划或采访观点，不得写成「宣布」「发布」「推出」。"
+        - id: eea66987-1e49-4f32-ad93-649ac9e8fe76
+          role: user
+          text: '竞品飞书
+
+            时间{{{#1791859598932.today#}}
+
+            {{#1791974499274.t1#}}'
+        retry_config:
+          max_retries: 2
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              competitor:
+                type: string
+              date:
+                type: string
+              filtered:
+                items:
+                  properties:
+                    reason:
+                      type: string
+                    title:
+                      type: string
+                  required:
+                  - title
+                  - reason
+                  type: object
+                type: array
+              items:
+                items:
+                  properties:
+                    date:
+                      type: string
+                    importance:
+                      type: number
+                    insight:
+                      type: string
+                    title:
+                      type: string
+                    type:
+                      type: string
+                    url:
+                      type: string
+                    what:
+                      type: string
+                  required:
+                  - title
+                  - date
+                  - type
+                  - what
+                  - insight
+                  - importance
+                  - url
+                  type: object
+                type: array
+              summary:
+                description: 一句话今日要点
+                type: string
+            required:
+            - competitor
+            - date
+            - summary
+            - items
+            - filtered
+            type: object
+        structured_output_enabled: true
+        title: 分析员飞书
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: '1791860052740'
+      position:
+        x: 1061.5
+        y: 358
+      positionAbsolute:
+        x: 1061.5
+        y: 358
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        outputs:
+        - value_selector:
+          - '1791880629407'
+          - output
+          value_type: object
+          variable: out
+        - value_selector:
+          - '1791881422717'
+          - issues
+          value_type: string
+          variable: audit
+        - value_selector:
+          - '1791879564409'
+          - hard_issues
+          value_type: string
+          variable: hard
+        - value_selector:
+          - '1791971325115'
+          - score
+          value_type: string
+          variable: score
+        - value_selector:
+          - '1791971325115'
+          - fails
+          value_type: string
+          variable: fails
+        selected: false
+        title: 输出
+        type: end
+      height: 193
+      id: '1791860447727'
+      position:
+        x: 3455.879390040443
+        y: -178.58938249005575
+      positionAbsolute:
+        x: 3455.879390040443
+        y: -178.58938249005575
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        model:
+          completion_params:
+            temperature: 0
+            thinking: false
+          mode: chat
+          name: deepseek-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 28b57390-0dc0-4be0-b75a-d61b0e7cdb94
+          role: system
+          text: "你是 AI 办公赛道的竞品分析员，只负责一个竞品。\n规则：\n1. 只依据给你的搜索结果，不编造事实和链接；url 必须是搜索结果里的原链接。\n\
+            2. 判断依据是每条结果的标题和 Published Date；Content 里顺带出现的侧栏、相关文章标题不算动态。\n3. 行业观察收录标准（折中）：\n\
+            - 竞品官方当天的发布、更新、合作、人事、数据，按普通动态收录。\n- 第三方文章（复盘、评测、分析）只有同时满足两点才收录，type 填「行业观察」，importance\
+            \ 不超过 2：\n  a) 发布日期等于今天；\n  b) 该竞品是文章主角：标题或第一段就在讲它，全文主要分析它的产品或策略。\n- 以下情况不收录，放入\
+            \ filtered，reason 写「仅被提及，非主角」：\n  别家产品的新闻里顺带提到该竞品（如「支持在钉钉中发消息」）；多品牌横评、榜单、导购文；该竞品只出现在列举中。\n\
+            4. 主体必须是该竞品本身，只是提到该竞品的不收。\n5. 同一事件多篇报道只保留一条，选最权威的来源。\n6. importance 1-3：3=产品发布/重大功能/战略；2=功能更新/合作/行业观察；1=小改动。\n\
+            7. insight 写对做 AI 办公产品的我们有什么启发，要具体，不说空话。\n商业软文（文末有商业转载免责声明、主体是第三方服务商）进\
+            \ filtered，reason 写「第三方软文，非竞品动态」。\n对已发布产品的分析文章归「行业观察」，不得写成「推出」或「发布」。\n\
+            \n10.「搜索结果未给出发布日期的，不得自行填写日期，放入 filtered，reason 写「无发布日期」。」\n8. 不符合的结果放进\
+            \ filtered，写上标题和过滤原因。没有动态时 items 为空数组。\n9.「搜索结果为空时，返回 items 和 filtered\
+            \ 均为空数组。」「今日无动态」交给 highlights 一句话说就够。\n评论、分析、复盘类第三方文章（标题是问句或观点句，或主要内容是作者的分析），type\
+            \ 只能是「行业观察」，不得归为其他类型。\nwhat 只写原文明确的事实。文中的设想、计划或采访观点，不得写成「宣布」「发布」「推出」。\n"
+        - id: eea66987-1e49-4f32-ad93-649ac9e8fe76
+          role: user
+          text: '竞品企业微信
+
+            时间{{{#1791859598932.today#}}
+
+            {{#1791974499274.t3#}}'
+        retry_config:
+          max_retries: 2
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              competitor:
+                type: string
+              date:
+                type: string
+              filtered:
+                items:
+                  properties:
+                    reason:
+                      type: string
+                    title:
+                      type: string
+                  required:
+                  - title
+                  - reason
+                  type: object
+                type: array
+              items:
+                items:
+                  properties:
+                    date:
+                      type: string
+                    importance:
+                      type: number
+                    insight:
+                      type: string
+                    title:
+                      type: string
+                    type:
+                      type: string
+                    url:
+                      type: string
+                    what:
+                      type: string
+                  required:
+                  - title
+                  - date
+                  - type
+                  - what
+                  - insight
+                  - importance
+                  - url
+                  type: object
+                type: array
+              summary:
+                description: 一句话今日要点
+                type: string
+            required:
+            - competitor
+            - date
+            - summary
+            - items
+            - filtered
+            type: object
+        structured_output_enabled: true
+        title: 分析员企微
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: '17918609755861'
+      position:
+        x: 1068.2017572445188
+        y: 576.7117668754948
+      positionAbsolute:
+        x: 1068.2017572445188
+        y: 576.7117668754948
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: false
+        isInLoop: false
+        model:
+          completion_params:
+            temperature: 0
+            thinking: false
+          mode: chat
+          name: deepseek-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 28b57390-0dc0-4be0-b75a-d61b0e7cdb94
+          role: system
+          text: "你是 AI 办公赛道的竞品分析员，只负责一个竞品。\n规则：\n1. 只依据给你的搜索结果，不编造事实和链接；url 必须是搜索结果里的原链接。\n\
+            2. 判断依据是每条结果的标题和 Published Date；Content 里顺带出现的侧栏、相关文章标题不算动态。\n3. 行业观察收录标准（折中）：\n\
+            - 竞品官方当天的发布、更新、合作、人事、数据，按普通动态收录。\n- 第三方文章（复盘、评测、分析）只有同时满足两点才收录，type 填「行业观察」，importance\
+            \ 不超过 2：\n  a) 发布日期等于今天；\n  b) 该竞品是文章主角：标题或第一段就在讲它，全文主要分析它的产品或策略。\n- 以下情况不收录，放入\
+            \ filtered，reason 写「仅被提及，非主角」：\n  别家产品的新闻里顺带提到该竞品（如「支持在钉钉中发消息」）；多品牌横评、榜单、导购文；该竞品只出现在列举中。\n\
+            4. 主体必须是该竞品本身，只是提到该竞品的不收。\n5. 同一事件多篇报道只保留一条，选最权威的来源。\n6. importance 1-3：3=产品发布/重大功能/战略；2=功能更新/合作/行业观察；1=小改动。\n\
+            7. insight 写对做 AI 办公产品的我们有什么启发，要具体，不说空话。\n8. 不符合的结果放进 filtered，写上标题和过滤原因。没有动态时\
+            \ items 为空数组。\n9.「搜索结果为空时，返回 items 和 filtered 均为空数组。」「今日无动态」交给 highlights\
+            \ 一句话说就够。\n10.「搜索结果未给出发布日期的，不得自行填写日期，放入 filtered，reason 写「无发布日期」。」\n商业软文（文末有商业转载免责声明、主体是第三方服务商）进\
+            \ filtered，reason 写「第三方软文，非竞品动态」。\n对已发布产品的分析文章归「行业观察」，不得写成「推出」或「发布」。\n\
+            评论、分析、复盘类第三方文章（标题是问句或观点句，或主要内容是作者的分析），type 只能是「行业观察」，不得归为其他类型。\nwhat 只写原文明确的事实。文中的设想、计划或采访观点，不得写成「宣布」「发布」「推出」。"
+        - id: eea66987-1e49-4f32-ad93-649ac9e8fe76
+          role: user
+          text: '竞品 钉钉
+
+            时间{{#1791859598932.today#}}
+
+            {{#1791974499274.t2#}}'
+        retry_config:
+          max_retries: 2
+          retry_enabled: true
+          retry_interval: 1000
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              competitor:
+                type: string
+              date:
+                type: string
+              filtered:
+                items:
+                  properties:
+                    reason:
+                      type: string
+                    title:
+                      type: string
+                  required:
+                  - title
+                  - reason
+                  type: object
+                type: array
+              items:
+                items:
+                  properties:
+                    date:
+                      type: string
+                    importance:
+                      type: number
+                    insight:
+                      type: string
+                    title:
+                      type: string
+                    type:
+                      type: string
+                    url:
+                      type: string
+                    what:
+                      type: string
+                  required:
+                  - title
+                  - date
+                  - type
+                  - what
+                  - insight
+                  - importance
+                  - url
+                  type: object
+                type: array
+              summary:
+                description: 一句话今日要点
+                type: string
+            required:
+            - competitor
+            - date
+            - summary
+            - items
+            - filtered
+            type: object
+        structured_output_enabled: true
+        title: 分析员钉钉tavily
+        type: llm
+        vision:
+          enabled: false
+      height: 117
+      id: '17918609999161'
+      position:
+        x: 1061.5
+        y: 16.67687961261396
+      positionAbsolute:
+        x: 1061.5
+        y: 16.67687961261396
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0
+            thinking: false
+          mode: chat
+          name: deepseek-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 6b737162-baf3-4ece-9cad-c777813d0695
+          role: system
+          text: '你是 AI 办公竞品日报的总编辑，收到飞书、钉钉、企业微信三位分析员的 JSON，合并成一份日报。
+
+            日报标准：
+
+            {{#env.daily_rules#}}
+
+            你的任务：
+
+            1. 不新增分析员没给的事实，不改 url。
+
+            2. 按标准合并同一事件，核对主角、type、importance。
+
+            3. items 按 importance 从高到低，同分按日期新到旧。
+
+            4. filtered 合并三家的过滤项，source 标明来自哪一路。
+
+            5. 三家都没有动态时 items 为空数组。'
+        - id: ca3bb8d4-7f6f-483b-8544-e9efcb9aa37c
+          role: user
+          text: '日期{{{#1791859598932.today#}}
+
+            飞书{{#1791860052740.structured_output#}}
+
+            钉钉{{#17918609999161.structured_output#}}
+
+            企业微信{{#17918609755861.structured_output#}}'
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              comparison:
+                type: string
+              date:
+                type: string
+              filtered:
+                items:
+                  properties:
+                    reason:
+                      type: string
+                    source:
+                      type: string
+                    title:
+                      type: string
+                  required:
+                  - source
+                  - title
+                  - reason
+                  type: object
+                type: array
+              highlights:
+                type: string
+              items:
+                items:
+                  properties:
+                    competitor:
+                      type: string
+                    date:
+                      type: string
+                    importance:
+                      type: number
+                    insight:
+                      type: string
+                    title:
+                      type: string
+                    type:
+                      type: string
+                    url:
+                      type: string
+                    what:
+                      type: string
+                  required:
+                  - competitor
+                  - title
+                  - date
+                  - type
+                  - what
+                  - insight
+                  - importance
+                  - url
+                  type: object
+                type: array
+            required:
+            - date
+            - highlights
+            - comparison
+            - items
+            - filtered
+            type: object
+        structured_output_enabled: true
+        title: 总编
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1791861440415'
+      position:
+        x: 1380.726871017345
+        y: 235.6213029220484
+      positionAbsolute:
+        x: 1380.726871017345
+        y: 235.6213029220484
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "import re\nimport json\nfrom datetime import timedelta, timezone\n\
+          from email.utils import parsedate_to_datetime\n\nBJ = timezone(timedelta(hours=8))\n\
+          \n\ndef norm(u):\n    return (u or '').strip().rstrip('/')\n\n\ndef parse_results(text):\n\
+          \    # 从 Tavily 的 text 里取出 {url: Published Date}\n    res = {}\n    for\
+          \ block in (text or '').split('# Result ')[1:]:\n        u = re.search(r'\\\
+          *\\*URL:\\*\\*\\s*(\\S+)', block)\n        d = re.search(r'\\*\\*Published\
+          \ Date:\\*\\*\\s*(.+)', block)\n        if u:\n            res[norm(u.group(1))]\
+          \ = d.group(1).strip() if d else ''\n    return res\n\n\ndef main(draft,\
+          \ s1: str, s2: str, s3: str, today: str) -> dict:\n    s1 = (s1 or \"\"\
+          ).replace(\"\\\\n\",\"\\n\")\n    s2 = (s2 or \"\").replace(\"\\\\n\", \"\
+          \\n\")\n    s3 = (s3 or \"\").replace(\"\\\\n\", \"\\n\")\n    if isinstance(draft,\
+          \ str):\n        draft = json.loads(draft)\n    src = {}\n    for s in (s1,\
+          \ s2, s3):\n        src.update(parse_results(s))\n\n    issues = []\n  \
+          \  for it in draft.get('items', []):\n        t = it.get('title', '')\n\
+          \        url = norm(it.get('url'))\n        if not url:\n            issues.append(f'《{t}》缺少链接')\n\
+          \            continue\n        if not re.sub(r'^https?://[^/]+', '', url).strip('/'):\n\
+          \            issues.append(f'《{t}》链接是网站首页')\n        if url not in src:\n\
+          \            issues.append(f'《{t}》链接不在原始搜索结果中')\n            continue\n\
+          \        raw = src[url]\n        if not raw:\n            issues.append(f'《{t}》搜索结果没有发布日期')\n\
+          \            continue\n        dt = parsedate_to_datetime(raw)\n       \
+          \ day = dt.astimezone(BJ).strftime('%Y-%m-%d')\n        \n\n    return {'hard_issues':\
+          \ '；'.join(issues) if issues else '无'}"
+        code_language: python3
+        outputs:
+          hard_issues:
+            children: null
+            type: string
+        selected: false
+        title: 硬规则检查
+        type: code
+        variables:
+        - value_selector:
+          - '1791861440415'
+          - structured_output
+          value_type: object
+          variable: draft
+        - value_selector:
+          - '1791962105399'
+          - s1_text
+          value_type: string
+          variable: s1
+        - value_selector:
+          - '1791962105399'
+          - s2_text
+          value_type: string
+          variable: s2
+        - value_selector:
+          - '1791962105399'
+          - s3_text
+          value_type: string
+          variable: s3
+        - value_selector:
+          - '1791859598932'
+          - today
+          value_type: string
+          variable: today
+      height: 51
+      id: '1791879564409'
+      position:
+        x: 1448.13807326301
+        y: 547.2033543039983
+      positionAbsolute:
+        x: 1448.13807326301
+        y: 547.2033543039983
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.2
+            thinking: false
+          mode: chat
+          name: deepseek-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 7c7c8a40-fea9-4f0d-8b1d-8e51f47b632f
+          role: system
+          text: '你是竞品日报的审核员，只挑错，不改稿。
+
+            日报标准：
+
+            {{#env.daily_rules#}}
+
+            你只能提这 7 类问题：
+
+            A. 硬规则检查列出的问题，先对照搜索结果核实，属实才写。
+
+            B. 编造：what 里的事实在搜索结果里找不到。
+
+            C. 日期：原文发布日期不等于 today。
+
+            D. 同一事件出现 2 条及以上。
+
+            E. 主角、type、importance 不符合标准。
+
+            F. insight 是空话，或出现标准第 6 条禁止的内容。
+
+            G. highlights 或 comparison 写了 items 以外的内容。
+
+
+            删条权限：只有 A、B、C 可以要求移入 filtered，D 要求合并，并且 problem 里必须引用搜索结果原文作证据。E、F、G 只能要求修改，不得删条。不得把
+            filtered 里的条目捞回 items。
+
+            每条 issue 必须有一个可直接执行的 fix，不给二选一。合规的不写。没有问题时输出 pass=true、issues=[]。审核员不得要求补充以上内容；重写遇到这类要求时忽略。'
+        - id: 4695022a-13fe-44e6-b439-db021fe69ad9
+          role: user
+          text: '今天：{{{#1791859598932.today#}}
+
+            硬规则检查：{{{#1791879564409.hard_issues#}}
+
+            待审稿：{{{#1791861440415.structured_output#}}
+
+            搜索结果-飞书：{{#1791974499274.t1#}}
+
+            搜索结果-钉钉：{{#1791974499274.t2#}}
+
+            搜索结果-企业微信：{{#1791974499274.t3#}}'
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              issues:
+                items:
+                  properties:
+                    fix:
+                      type: string
+                    problem:
+                      type: string
+                    title:
+                      type: string
+                  required:
+                  - title
+                  - problem
+                  - fix
+                  type: object
+                type: array
+              pass:
+                type: boolean
+            required:
+            - pass
+            - issues
+            type: object
+        structured_output_enabled: true
+        title: 审核员
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1791880355379'
+      position:
+        x: 1613.131520816955
+        y: 430.31117152370894
+      positionAbsolute:
+        x: 1613.131520816955
+        y: 430.31117152370894
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        cases:
+        - case_id: 'true'
+          conditions:
+          - comparison_operator: is
+            id: e69ccb6c-0202-454f-be9b-3747aa602271
+            value: 'true'
+            varType: string
+            variable_selector:
+            - '1791881422717'
+            - passed
+          logical_operator: and
+        selected: false
+        title: 条件分支
+        type: if-else
+      height: 123
+      id: '1791880544392'
+      position:
+        x: 2030.973101709691
+        y: 226.34294617870077
+      positionAbsolute:
+        x: 2030.973101709691
+        y: 226.34294617870077
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        output_type: object
+        selected: false
+        title: 变量聚合器
+        type: variable-aggregator
+        variables:
+        - - '1791880640119'
+          - structured_output
+        - - '1791861440415'
+          - structured_output
+      height: 134
+      id: '1791880629407'
+      position:
+        x: 2376.4647410507955
+        y: 226.34294617870077
+      positionAbsolute:
+        x: 2376.4647410507955
+        y: 226.34294617870077
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            max_tokens: 4096
+            temperature: 0.2
+            thinking: false
+          mode: chat
+          name: deepseek-flash
+          provider: langgenius/deepseek/deepseek
+        prompt_template:
+        - id: 58545012-1da8-433d-af6d-8a92fdb91556
+          role: system
+          text: '你是总编，按审核意见修改日报。
+
+            日报标准：
+
+            {{#env.daily_rules#}}
+
+            修改规则：
+
+            1. 只改 issues 点到的地方，其余原样保留。
+
+            2. 只有 issue 以日期不符、链接不在搜索结果中或为首页、事实编造为理由时，才把条目移出 items；同一事件是合并，不是删除。fix
+            如果是二选一，选修改、保留。
+
+            3. 不新增搜索结果里没有的条目、事实或链接，不提原稿和审核过程。
+
+            4. 移出或合并后，同步改 highlights、comparison 和 filtered 的 reason。审核员不得要求补充以上内容；重写遇到这类要求时忽略。'
+        - id: 9b2e048d-ea6b-4569-a375-d6fb130db75c
+          role: user
+          text: '今天：{{{{#1791859598932.today#}}
+
+            原稿：{{{#1791861440415.structured_output#}}
+
+            审核意见：{{#1791881422717.issues#}}
+
+            搜索结果-飞书：{{#1791974499274.t1#}}
+
+            搜索结果-钉钉：{{#1791974499274.t2#}}
+
+            搜索结果-企业微信：{{#1791974499274.t3#}}'
+        selected: false
+        structured_output:
+          schema:
+            properties:
+              comparison:
+                type: string
+              date:
+                type: string
+              filtered:
+                items:
+                  properties:
+                    reason:
+                      type: string
+                    source:
+                      type: string
+                    title:
+                      type: string
+                  required:
+                  - source
+                  - title
+                  - reason
+                  type: object
+                type: array
+              highlights:
+                type: string
+              items:
+                items:
+                  properties:
+                    competitor:
+                      type: string
+                    date:
+                      type: string
+                    importance:
+                      type: number
+                    insight:
+                      type: string
+                    title:
+                      type: string
+                    type:
+                      type: string
+                    url:
+                      type: string
+                    what:
+                      type: string
+                  required:
+                  - competitor
+                  - title
+                  - date
+                  - type
+                  - what
+                  - insight
+                  - importance
+                  - url
+                  type: object
+                type: array
+            required:
+            - date
+            - highlights
+            - comparison
+            - items
+            - filtered
+            type: object
+        structured_output_enabled: true
+        title: 重写LLM
+        type: llm
+        vision:
+          enabled: false
+      height: 87
+      id: '1791880640119'
+      position:
+        x: 2287.496596454485
+        y: 474.6737061456533
+      positionAbsolute:
+        x: 2287.496596454485
+        y: 474.6737061456533
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "import json, re\n\nFAKE = (\"无需修改\", \"合规\", \"无问题\", \"需确认\", \"需核对\"\
+          )\n\ndef main(raw: str) -> dict:\n    text = re.sub(r\"<think>.*?(</think>|$)\"\
+          , \"\", raw or \"\", flags=re.S)\n    try:\n        m = re.search(r\"\\\
+          {.*\\}\", text, re.S)\n        data = json.loads(m.group(0)) if m else {}\n\
+          \    except Exception:\n        data = {}\n    if \"pass\" not in data:\n\
+          \        return {\"passed\": \"true\", \"issues\": \"审核员输出无法解析，本次跳过审核\"\
+          }\n    real = [i for i in data.get(\"issues\", [])\n            if not any(w\
+          \ in str(i.get(\"fix\", \"\")) for w in FAKE)]\n    if not real:\n     \
+          \   return {\"passed\": \"true\", \"issues\": \"无\"}\n    lines = [f\"《{i.get('title',\
+          \ '')}》问题：{i.get('problem', '')}；修改：{i.get('fix', '')}\" for i in real]\n\
+          \    return {\"passed\": \"false\", \"issues\": \"\\n\".join(lines)}"
+        code_language: python3
+        outputs:
+          issues:
+            children: null
+            type: string
+          passed:
+            children: null
+            type: string
+        selected: false
+        title: 解析审核
+        type: code
+        variables:
+        - value_selector:
+          - '1791880355379'
+          - text
+          value_type: string
+          variable: raw
+      height: 51
+      id: '1791881422717'
+      position:
+        x: 1733.311404198287
+        y: 338.6145311004408
+      positionAbsolute:
+        x: 1733.311404198287
+        y: 338.6145311004408
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        selected: false
+        template: "【AI 办公竞品日报】{{ data.date }}\r\n\r\n今日要点：{{ data.highlights }}\r\n\
+          {% for it in data['items'] %}\r\n{{ loop.index }}. [{{ it.competitor }}｜{{\
+          \ it.type }}｜{{ '★' * it.importance }}] {{ it.title }}\r\n发生了什么：{{ it.what\
+          \ }}\r\n对我们的启发：{{ it.insight }}\r\n链接：{{ it.url }}\r\n{%- else %}\r\n今日三家均无符合标准的新动态。\r\
+          \n{%- endfor %}\r\n\r\n横向对比：{{ data.comparison }}"
+        title: 模板转换
+        type: template-transform
+        variables:
+        - value_selector:
+          - '1791897375882'
+          - out2
+          value_type: object
+          variable: data
+      height: 51
+      id: '1791884679242'
+      position:
+        x: 3275.1703142045344
+        y: 206.92668947941533
+      positionAbsolute:
+        x: 3275.1703142045344
+        y: 206.92668947941533
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "import re, json\nfrom email.utils import parsedate_to_datetime\n\n\
+          def main(out, s1: str, s2: str, s3: str) -> dict:\n    s1 = (s1 or \"\"\
+          ).replace(\"\\\\n\",\"\\n\")\n    s2 = (s2 or \"\").replace(\"\\\\n\", \"\
+          \\n\")\n    s3 = (s3 or \"\").replace(\"\\\\n\", \"\\n\")\n    data = out\
+          \ if isinstance(out, dict) else json.loads(out)\n    dates = {}\n    for\
+          \ s in (s1, s2, s3):\n        for block in re.split(r'# Result \\d+:', s\
+          \ or ''):\n            m_url = re.search(r'\\*\\*URL:\\*\\*\\s*(\\S+)',\
+          \ block)\n            m_date = re.search(r'\\*\\*Published Date:\\*\\*\\\
+          s*(.+)', block)\n            if m_url and m_date:\n                dates[m_url.group(1).strip()]\
+          \ = m_date.group(1).strip()\n\n    # 已进 filtered 的条目，从 items 里删掉\n    filtered_titles\
+          \ = {str(f.get('title', '')).strip() for f in data.get('filtered', [])}\n\
+          \    items = [it for it in data.get('items', [])\n             if str(it.get('title',\
+          \ '')).strip() not in filtered_titles]\n\n    for it in items:\n       \
+          \ url = it.get('url', '')\n        d = dates.get(url)\n        suspect =\
+          \ True\n        if d:\n            try:\n                dt = parsedate_to_datetime(d)\n\
+          \                suspect = dt.minute == 0 and dt.second == 0\n         \
+          \   except Exception:\n                suspect = True\n        official\
+          \ = any(k in url for k in ('weixin.qq.com', 'feishu.cn', 'dingtalk.com'))\n\
+          \        if suspect and official:\n            title = it.get('title', '')\n\
+          \            if not title.startswith('【日期待核实】'):\n                it['title']\
+          \ = '【日期待核实】' + title\n            it['importance'] = min(int(it.get('importance',\
+          \ 1)), 2)\n        if it.get('type') == '行业观察':\n            it['importance']\
+          \ = min(int(it.get('importance', 1)), 2)\n\n    data['items'] = items\n\
+          \    if not items:\n        data['highlights'] = '今日飞书、钉钉、企业微信均无符合标准的新动态。'\n\
+          \        data['comparison'] = '无'\n    return {'out2': data}"
+        code_language: python3
+        outputs:
+          out2:
+            children: null
+            type: object
+        selected: false
+        title: 日期标注
+        type: code
+        variables:
+        - value_selector:
+          - '1791880629407'
+          - output
+          value_type: object
+          variable: out
+        - value_selector:
+          - '1791962105399'
+          - s1_text
+          value_type: string
+          variable: s1
+        - value_selector:
+          - '1791962105399'
+          - s2_text
+          value_type: string
+          variable: s2
+        - value_selector:
+          - '1791962105399'
+          - s3_text
+          value_type: string
+          variable: s3
+      height: 51
+      id: '1791897375882'
+      position:
+        x: 2632.893800022664
+        y: 379.44932659643035
+      positionAbsolute:
+        x: 2632.893800022664
+        y: 379.44932659643035
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        selected: false
+        title: 用户输入
+        type: start
+        variables:
+        - default: ''
+          hint: ''
+          label: 飞书
+          max_length: 20000
+          options: []
+          placeholder: ''
+          required: true
+          type: paragraph
+          variable: s1_text
+        - default: ''
+          hint: ''
+          label: 钉钉
+          max_length: 20000
+          options: []
+          placeholder: ''
+          required: true
+          type: paragraph
+          variable: s2_text
+        - default: ''
+          hint: ''
+          label: 企微
+          max_length: 20000
+          options: []
+          placeholder: ''
+          required: true
+          type: paragraph
+          variable: s3_text
+        - default: '2026-10-12'
+          hint: ''
+          label: run_date_
+          options: []
+          placeholder: ''
+          required: true
+          type: text-input
+          variable: run_date_
+      height: 186
+      id: '1791962105399'
+      position:
+        x: -228.17861934773728
+        y: 352.12629595180596
+      positionAbsolute:
+        x: -228.17861934773728
+        y: 352.12629595180596
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "import json\n\n# 每份 fixture 的期望，按 run_date 取。新增样本只需在这里加一项。\nEXPECT\
+          \ = {\n    \"2026-10-14\": {\n        \"must_items\": [  # url 片段: 期望字段\n\
+          \            {\"url\": \"L96R61BF\", \"type\": \"合作\", \"importance_min\"\
+          : 4},\n        ],\n        \"items_count\": 1,\n        \"must_filtered\"\
+          : [\"L96NB5NE\", \"ifanr.com/1684200\"],  # 这些链接不得出现在 items\n        \"\
+          forbid_competitor\": [\"钉钉\", \"飞书\"],  # items 里不应出现\n    },\n    \"2026-10-12\"\
+          : {\n        \"must_items\": [\n            {\"url\": \"L92PVD0R\", \"importance_min\"\
+          : 3},\n            {\"url\": \"huxiu.com/article/4896760\", \"type\": \"\
+          行业观察\", \"importance_min\": 2, \"importance_max\": 2},\n        ],\n   \
+          \     \"items_count\": 2,\n        \"must_filtered\": [\"anker-recorder-bean\"\
+          , \"aily-repost\"],\n        \"forbid_competitor\": [],\n    },\n    \"\
+          2026-11-01\": {  # S1 空结果日\n        \"must_items\": [], \"items_count\"\
+          : 0, \"must_filtered\": [], \"forbid_competitor\": [],\n        \"forbid_words\"\
+          : [\"importance\"],  # 空日允许写「今日无动态」\n    },\n    \"2026-11-02\": {  # S2\
+          \ 年度发布会+同事件\n        \"must_items\": [{\"url\": \"dingtalk-9-launch\", \"\
+          importance_min\": 5}],\n        \"items_count\": 1,\n        \"must_filtered\"\
+          : [\"dingtalk-9-media\", \"dingtalk-9-analysis\"],\n        \"forbid_competitor\"\
+          : [\"飞书\", \"企业微信\"],\n    },\n    \"2026-11-03\": {  # S3 三家同天+横评\n   \
+          \     \"must_items\": [\n            {\"url\": \"feishu-base-ai-field\"\
+          , \"importance_min\": 3, \"importance_max\": 3},\n            {\"url\":\
+          \ \"dingtalk-bank-partner\", \"type\": \"合作\", \"importance_min\": 4},\n\
+          \            {\"url\": \"wecom-5015-fix\", \"importance_min\": 1, \"importance_max\"\
+          : 2},\n        ],\n        \"items_count\": 3,\n        \"must_filtered\"\
+          : [\"office-suite-review\"],\n        \"forbid_competitor\": [],\n    },\n\
+          \    \"2026-11-04\": {  # S4 日期边界\n        \"must_items\": [\n         \
+          \   {\"url\": \"dingtalk-doc-ai-formula\", \"importance_min\": 3},\n   \
+          \         {\"url\": \"wecom-sheet-templates\", \"importance_min\": 2},\n\
+          \        ],\n        \"items_count\": 2,\n        \"must_filtered\": [\"\
+          www.feishu.cn\", \"wecom-old-news\"],\n        \"forbid_competitor\": [\"\
+          飞书\"],\n    },\n}\nFORBID_WORDS = [\"无动态\", \"无符合\", \"无官方动态\", \"没有动态\"\
+          , \"importance\"]\n\n\ndef main(out, run_date: str) -> dict:\n    if isinstance(out,\
+          \ str):\n        try:\n            out = json.loads(out)\n        except\
+          \ Exception:\n            return {\"score\": \"0/0\", \"fails\": \"out 不是合法\
+          \ JSON\"}\n    exp = EXPECT.get(run_date)\n    if not exp:\n        return\
+          \ {\"score\": \"-\", \"fails\": f\"没有 {run_date} 的期望，跳过打分\"}\n\n    items\
+          \ = out.get(\"items\") or []\n    text = (out.get(\"highlights\") or \"\"\
+          ) + (out.get(\"comparison\") or \"\")\n    checks = []  # (名称, 是否通过, 说明)\n\
+          \n    checks.append((\"条数\", len(items) == exp[\"items_count\"], f\"items\
+          \ {len(items)} 条，应为 {exp['items_count']}\"))\n\n    for m in exp[\"must_items\"\
+          ]:\n        hit = [i for i in items if m[\"url\"] in (i.get(\"url\") or\
+          \ \"\")]\n        if not hit:\n            checks.append((f\"收录 {m['url']}\"\
+          , False, \"未收录\"))\n            continue\n        it = hit[0]\n        imp\
+          \ = it.get(\"importance\") or 0\n        try:\n            imp = int(imp)\n\
+          \        except Exception:\n            imp = 0\n        if \"type\" in\
+          \ m:\n            checks.append((f\"{m['url']} type\", it.get(\"type\")\
+          \ == m[\"type\"], f\"type={it.get('type')}，应为 {m['type']}\"))\n        ok\
+          \ = imp >= m.get(\"importance_min\", 0) and imp <= m.get(\"importance_max\"\
+          , 5)\n        checks.append((f\"{m['url']} importance\", ok, f\"importance={imp}\"\
+          ))\n\n    for u in exp[\"must_filtered\"]:\n        bad = any(u in (i.get(\"\
+          url\") or \"\") for i in items)\n        checks.append((f\"过滤 {u}\", not\
+          \ bad, \"仍在 items 中\"))\n\n    for c in exp[\"forbid_competitor\"]:\n  \
+          \      bad = any(i.get(\"competitor\") == c for i in items)\n        checks.append((f\"\
+          无 {c} 条目\", not bad, f\"items 出现 {c}\"))\n\n    hits = [w for w in exp.get(\"\
+          forbid_words\", FORBID_WORDS) if w in text]\n    checks.append((\"highlights/comparison\
+          \ 无禁词\", not hits, \"出现：\" + \"、\".join(hits)))\n\n    passed = sum(1 for\
+          \ _, ok, _ in checks if ok)\n    fails = [f\"{n}：{why}\" for n, ok, why\
+          \ in checks if not ok]\n    return {\"score\": f\"{passed}/{len(checks)}\"\
+          , \"fails\": \"；\".join(fails) or \"全部通过\"}"
+        code_language: python3
+        outputs:
+          fails:
+            children: null
+            type: string
+          score:
+            children: null
+            type: string
+        selected: false
+        title: 自动打分
+        type: code
+        variables:
+        - value_selector:
+          - '1791897375882'
+          - out2
+          value_type: object
+          variable: out
+        - value_selector:
+          - '1791962105399'
+          - run_date_
+          value_type: string
+          variable: run_date
+      height: 51
+      id: '1791971325115'
+      position:
+        x: 2975.1703142045344
+        y: 206.92668947941533
+      positionAbsolute:
+        x: 2975.1703142045344
+        y: 206.92668947941533
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    - data:
+        code: "import re\nfrom datetime import timedelta, timezone\nfrom email.utils\
+          \ import parsedate_to_datetime\n\nBJ = timezone(timedelta(hours=8))\n\n\n\
+          def conv(t):\n    t = (t or \"\").replace(\"\\\\n\", \"\\n\")\n\n    def\
+          \ rep(m):\n        try:\n            d = parsedate_to_datetime(m.group(1).strip())\n\
+          \            if d.tzinfo is None:\n                d = d.replace(tzinfo=timezone.utc)\n\
+          \            bj = d.astimezone(BJ)\n            return f\"**Published Date:**\
+          \ {bj:%Y-%m-%d %H:%M}（北京时间）\"\n        except Exception:\n            return\
+          \ m.group(0)\n\n    return re.sub(r\"\\*\\*Published Date:\\*\\*\\s*([^\\\
+          n]+)\", rep, t)\n\n\ndef main(s1: str, s2: str, s3: str) -> dict:\n    return\
+          \ {\"t1\": conv(s1), \"t2\": conv(s2), \"t3\": conv(s3)}"
+        code_language: python3
+        outputs:
+          t1:
+            children: null
+            type: string
+          t2:
+            children: null
+            type: string
+          t3:
+            children: null
+            type: string
+        selected: true
+        title: 时区转换
+        type: code
+        variables:
+        - value_selector:
+          - '1791962105399'
+          - s1_text
+          value_type: string
+          variable: s1
+        - value_selector:
+          - '1791962105399'
+          - s2_text
+          value_type: string
+          variable: s2
+        - value_selector:
+          - '1791962105399'
+          - s3_text
+          value_type: string
+          variable: s3
+      height: 51
+      id: '1791974499274'
+      position:
+        x: 224.8486382300103
+        y: 373.12629595180596
+      positionAbsolute:
+        x: 224.8486382300103
+        y: 373.12629595180596
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+      zIndex: 0
+    viewport:
+      x: 341.9280145519924
+      y: 296.9478022978641
+      zoom: 0.47445602727712305
+  rag_pipeline_variables: []
