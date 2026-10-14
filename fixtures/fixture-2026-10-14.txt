@@ -1,0 +1,30 @@
+# 回放样本 2026-10-14（真实 Tavily 输出，来自主流程当天运行日志；run_date=2026-10-14）
+# 用途：测「同一事件合并」+ 横评/导购过滤 + 无效页过滤
+# s1_text/s2_text/s3_text = 用户在 Dify 日志中三个 Tavily 节点的 text 字段原文（用户手里有完整原文，此处只记摘要）
+
+## s1_text（飞书）
+No results found for '飞书 最新 发布 更新' in Tavily.
+
+## s2_text（钉钉）— 5 条，全是录音笔横评/导购，钉钉 A1/A1 Pro 仅为其中一款
+1. 搜狐 口袋里的AI录音助理：印象笔记象语与钉钉A1 Pro深度实测（正文 2026-10-08 17:26）https://www.sohu.com/a/1085173125_122645060
+2. 网易 录音笔多少钱才够用，关键看场景（无发布日期）https://www.163.com/dy/article/L96QJKQT0544KU02.html
+3. 搜狐 2026年录音笔实测：音士顿、纽曼、爱国者与钉钉（无日期）https://www.sohu.com/a/1085864872_122645258
+4. 搜狐 科大讯飞、钉钉、金正、爱国者AI录音笔真实体验报告（正文 2026-10-11 11:02）https://www.sohu.com/a/1086265610_122645258
+5. 搜狐 PLAUD、淮夏与钉钉AI录音设备深度体验（正文 2026-10-08 17:26）https://www.sohu.com/a/1085172593_122645060
+
+## s3_text（企业微信）— 同一事件 3 篇 + 1 个无效页
+1. 网易/快科技 官宣：WorkBuddy、企业微信正式联手（Wed, 14 Oct 2026 03:20:18 GMT）https://www.163.com/dy/article/L96R61BF0511CPVM.html
+2. 网易 WorkBuddy接入企业微信十大能力（Wed, 14 Oct 2026 02:13:12 GMT；正文抓到的全是无关新闻列表）https://www.163.com/dy/article/L96NB5NE05527PMU.html
+3. 爱范儿 企业微信和 WorkBuddy 组了个「王炸局」（Wed, 14 Oct 2026 02:30:24 GMT）https://www.ifanr.com/1684200
+4. 企业微信 参数不合法（-2003 错误页，Tue, 13 Oct 2026 19:00:00 GMT）https://work.weixin.qq.com/company/about
+
+## 期望结果
+items（恰好 1 条）：
+- 企业微信 × WorkBuddy 正式联合（企微 5.0.12 内直接把任务交给 WorkBuddy；读权限内消息/文档/会议，结果发回企微，可发消息、建群、存微盘；管理员分配名额、权限、算力）。type 合作，importance 4。url 取快科技(Result 1)或爱范儿(Result 3)。
+filtered：
+- 同事件另外两篇：reason「同一事件，已合并」
+- 企业微信错误页：reason 无效页面/首页
+- 钉钉 5 篇：横评/导购，钉钉仅被提及（或日期非今日）
+- 飞书：空，不进 filtered
+highlights/comparison：只写企微×WorkBuddy，不提飞书/钉钉「无动态」
+失败判定：items ≥2 条同事件；审核员把十大能力捞回 items；钉钉录音笔进 items；importance ≤3
